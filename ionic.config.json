@@ -1,0 +1,7 @@
+{
+  "name": "Pet-Store-Manager",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
