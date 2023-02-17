@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { PetsOverviewPageRoutingModule } from './pets-overview-routing.module';
 
 import { PetsOverviewPage } from './pets-overview.page';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
@@ -14,6 +15,7 @@ import { PetsOverviewPage } from './pets-overview.page';
     FormsModule,
     IonicModule,
     PetsOverviewPageRoutingModule,
+    SharedModule
   ],
   declarations: [PetsOverviewPage]
 })

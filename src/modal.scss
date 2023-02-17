@@ -1,0 +1,22 @@
+.backdrop{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.75);
+  z-index: 100;
+}
+
+.content{
+  z-index: 200;
+  position: fixed;
+  top: 1vh;
+  left: 10vw;
+  right: 10vw;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}

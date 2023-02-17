@@ -1,5 +1,7 @@
+import { Pet } from './../../models/pet';
 import { ModalManagerService } from './../../services/modal-manager.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-add-pet-wizard',
@@ -9,10 +11,24 @@ import { Component, OnInit } from '@angular/core';
 export class AddPetWizardComponent implements OnInit {
 
 
-  pet:any;
+  pet:Pet = {
+    id: 0,
+    name: '',
+    status: 'available',
+    category: {
+      id: 0,
+      name: '',
+    },
+    photoUrls: [],
+    tags: []
+  };
+
+  @Output() addedPet = new EventEmitter();
+
+
   isOpen: boolean = false;
 
-  constructor(private modalManagerService:ModalManagerService) {
+  constructor(private modalManagerService:ModalManagerService, private apiService: ApiService) {
     this.modalManagerService.addPetWizardIsOpen.subscribe((state)=>{
       this.isOpen = state;
     })
@@ -25,8 +41,16 @@ export class AddPetWizardComponent implements OnInit {
   }
 
   onAddPet(){
-    this.modalManagerService.toggleAddPetWizard(false);
+    let self = this;
+    this.apiService.addPet(
+                          self.pet,
+                          (message: any)=>{
+                            alert(message);
+                            self.addedPet.emit();
+                          },
+                          (error: any)=>{alert(error)})
 
+    this.modalManagerService.toggleAddPetWizard(false);
 
   }
 

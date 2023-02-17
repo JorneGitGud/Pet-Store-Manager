@@ -28,12 +28,26 @@ export class ApiService {
 
     this.http.post(url, pet).subscribe((res:any)=>{
       if(res.id){
-        onScuccess(res);
+        onScuccess('Added pet');
       }else{
         onError('Failed to add pet');
       }
     })
   }
+
+  deletePet(pet: any, onSuccess: any, onError: any) {
+    const url = `${this.BASE_URL}/pet/${pet.id}`;
+
+    this.http.delete(url, { responseType: 'text' }).subscribe(
+      (res) => {
+        onSuccess(res);
+      },
+      (err) => {
+        onError(err);
+      }
+    );
+  }
+
 
   private generateRandomId(): number {
     return Math.floor(Math.random() * 1000000);

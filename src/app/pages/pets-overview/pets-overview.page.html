@@ -1,3 +1,7 @@
+<app-add-pet-wizard (addedPet)="refreshPets()"></app-add-pet-wizard>
+
+
+
 <ion-header>
   <ion-toolbar>
     <ion-title>
@@ -16,13 +20,21 @@
 
   <ion-list>
     <ion-item *ngFor="let pet of pets">
-      <ion-thumbnail slot="start">
-        <img [src]="pet.photoUrl">
-      </ion-thumbnail>
+
+      <div class="thumbnail-holder flex-row">
+        <ion-thumbnail slot="start" *ngFor="let url of pet.photoUrls">
+          <!-- Urls from api are not working, so I used a placeholder image -->
+          <!-- <img [src]="url"> -->
+          <ion-icon name="person-outline" size="large"></ion-icon>
+        </ion-thumbnail>
+      </div>
+
       <ion-label>
         <h2>{{ pet.name }}</h2>
         <p>{{ pet.status }}</p>
       </ion-label>
+
+      <ion-icon name="trash-outline" slot="end" style="cursor: pointer;" (click)="deletePet(pet)"></ion-icon>
     </ion-item>
   </ion-list>
 
