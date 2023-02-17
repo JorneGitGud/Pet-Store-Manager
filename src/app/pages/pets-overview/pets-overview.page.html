@@ -1,9 +1,34 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>pets-overview</ion-title>
+    <ion-title>
+      Pets overview
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
+  <ion-select [(ngModel)]="selectedStatus" (ionChange)="refreshPets()">
+    <ion-select-option value="available">Available</ion-select-option>
+    <ion-select-option value="pending">Pending</ion-select-option>
+    <ion-select-option value="sold">Sold</ion-select-option>
+  </ion-select>
+
+  <ion-list>
+    <ion-item *ngFor="let pet of pets">
+      <ion-thumbnail slot="start">
+        <img [src]="pet.photoUrl">
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ pet.name }}</h2>
+        <p>{{ pet.status }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="openAddPetModal()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

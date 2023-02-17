@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -20,15 +20,19 @@ export class ApiService {
     return this.http.get<any[]>(url);
   }
 
-  addPet(pet: any): Observable<any> {
+  addPet(pet: any, onScuccess:any, onError:any){
 
     const url = `${this.BASE_URL}/pet`;
 
     pet.id = this.generateRandomId(); // Generate a random ID for the new pet
 
-    return this.http.post(url, pet).pipe(
-      map((response: any) => response.data)
-    );
+    this.http.post(url, pet).subscribe((res:any)=>{
+      if(res.id){
+        onScuccess(res);
+      }else{
+        onError('Failed to add pet');
+      }
+    })
   }
 
   private generateRandomId(): number {

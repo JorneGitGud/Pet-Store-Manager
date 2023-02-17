@@ -13,7 +13,7 @@ import { PetsOverviewPage } from './pets-overview.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    PetsOverviewPageRoutingModule
+    PetsOverviewPageRoutingModule,
   ],
   declarations: [PetsOverviewPage]
 })

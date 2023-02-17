@@ -1,0 +1,38 @@
+<div class="backdrop" (click)="onClose()" *ngIf="isOpen">
+  <div class="content" (click)="stopCloseModal($event)">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>
+          <ion-icon name="add"></ion-icon>
+          Add a new pet
+        </ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-item>
+          <ion-label position="floating">Name</ion-label>
+          <ion-input type="text" [(ngModel)]="pet.name"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Status</ion-label>
+          <ion-select [(ngModel)]="pet.status">
+            <ion-select-option value="available">Available</ion-select-option>
+            <ion-select-option value="pending">Pending</ion-select-option>
+            <ion-select-option value="sold">Sold</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Photo URL</ion-label>
+          <ion-input type="text" [(ngModel)]="pet.photoUrl"></ion-input>
+        </ion-item>
+
+        <ion-button expand="block" (click)="onAddPet()">Add pet</ion-button>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+
+</div>
+
