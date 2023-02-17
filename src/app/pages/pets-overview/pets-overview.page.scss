@@ -4,3 +4,8 @@
   min-width: 10vw;
   gap: $padding;
 }
+
+ion-item{
+  border: 1px solid var(--shadow);
+  border-radius: 5px;
+}

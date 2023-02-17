@@ -9,9 +9,7 @@ import { ApiService } from 'src/app/services/api.service';
   styleUrls: ['./add-pet-wizard.component.scss'],
 })
 export class AddPetWizardComponent implements OnInit {
-
-
-  pet:Pet = {
+  pet: Pet = {
     id: 0,
     name: '',
     status: 'available',
@@ -20,42 +18,45 @@ export class AddPetWizardComponent implements OnInit {
       name: '',
     },
     photoUrls: [],
-    tags: []
+    tags: [],
   };
 
   @Output() addedPet = new EventEmitter();
 
-
   isOpen: boolean = false;
 
-  constructor(private modalManagerService:ModalManagerService, private apiService: ApiService) {
-    this.modalManagerService.addPetWizardIsOpen.subscribe((state)=>{
+  constructor(
+    private modalManagerService: ModalManagerService,
+    private apiService: ApiService
+  ) {
+    this.modalManagerService.addPetWizardIsOpen.subscribe((state) => {
       this.isOpen = state;
-    })
-   }
+    });
+  }
 
   ngOnInit() {}
 
-  onClose(){
+  onClose() {
     this.modalManagerService.toggleAddPetWizard(false);
   }
 
-  onAddPet(){
+  onAddPet() {
     let self = this;
     this.apiService.addPet(
-                          self.pet,
-                          (message: any)=>{
-                            alert(message);
-                            self.addedPet.emit();
-                          },
-                          (error: any)=>{alert(error)})
+      self.pet,
+      (message: any) => {
+        alert(message);
+        self.addedPet.emit();
+      },
+      (error: any) => {
+        alert(error);
+      }
+    );
 
     this.modalManagerService.toggleAddPetWizard(false);
-
   }
 
-  stopCloseModal(event: any){
-    event.stopPropagation()
+  stopCloseModal(event: any) {
+    event.stopPropagation();
   }
-
 }

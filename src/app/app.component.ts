@@ -1,4 +1,3 @@
-import { ApiService } from './services/api.service';
 import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
@@ -9,21 +8,7 @@ export class AppComponent {
   public appPages = [
     { title: 'Home', url: 'home', icon: 'home' },
     { title: 'Pets', url: 'pets-overview', icon: 'list' },
-    // { title: 'Inbox', url: '/folder/Inbox', icon: 'mail' },
-    // { title: 'Outbox', url: '/folder/Outbox', icon: 'paper-plane' },
-    // { title: 'Favorites', url: '/folder/Favorites', icon: 'heart' },
-    // { title: 'Archived', url: '/folder/Archived', icon: 'archive' },
-    // { title: 'Trash', url: '/folder/Trash', icon: 'trash' },
-    // { title: 'Spam', url: '/folder/Spam', icon: 'warning' },
   ];
   public labels = [];
-  // public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
-  constructor(private apiService:ApiService) {
-
-    this.apiService.getPets().subscribe((pets) => {
-      console.log(pets);
-
-    });
-
-  }
+  constructor() {}
 }

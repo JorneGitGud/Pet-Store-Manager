@@ -7,7 +7,7 @@ import { BehaviorSubject } from 'rxjs';
 export class ModalManagerService {
 
 
-  addPetWizardIsOpen = new BehaviorSubject<boolean>(true);
+  addPetWizardIsOpen = new BehaviorSubject<boolean>(false);
 
   // toggleModal(name:string, state:boolean){
   //   this[name].next(state);

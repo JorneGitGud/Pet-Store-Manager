@@ -1,7 +1,7 @@
-import { Pet } from './../../models/pet';
-import { ModalManagerService } from './../../services/modal-manager.service';
-import { ApiService } from './../../services/api.service';
 import { Component, OnInit } from '@angular/core';
+import { Pet } from './../../models/pet';
+import { ApiService } from './../../services/api.service';
+import { ModalManagerService } from './../../services/modal-manager.service';
 
 @Component({
   selector: 'app-pets-overview',

@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AddPetWizardComponent } from '../components/add-pet-wizard/add-pet-wizard.component';
-import { IonicModule } from '@ionic/angular';
+import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { IonicModule } from '@ionic/angular';
+import { AddPetWizardComponent } from '../components/add-pet-wizard/add-pet-wizard.component';
 
 const components = [
   AddPetWizardComponent
